@@ -14,7 +14,7 @@ stages:
           Owner: sandeepdulam19   # Your GitHub username
           Repo: CAPSTONE          # Your GitHub repository name
           Branch: master          # GitHub branch to pull from
-          OAuthToken: <your-oauth-token>  # GitHub OAuth token for authentication
+          OAuthToken: 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  # GitHub OAuth token for authentication
 
   - name: Deploy
     actions:
