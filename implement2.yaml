@@ -29,7 +29,7 @@ Parameters:
 
   KeyPair:
     Type: String
-    Default: chennapragada
+    Default: capstone
     Description: EC2 Key Pair for SSH access.
 
   InstanceType:
