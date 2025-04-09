@@ -1,0 +1,32 @@
+version: 1
+stages:
+  - name: Source
+    actions:
+      - name: GitHubSource
+        actionTypeId:
+          category: Source
+          owner: AWS
+          provider: GitHub
+          version: 1
+        outputArtifacts:
+          - name: SourceOutput  # This will hold the files from GitHub
+        configuration:
+          Owner: sandeepdulam19   # Your GitHub username
+          Repo: CAPSTONE          # Your GitHub repository name
+          Branch: master          # GitHub branch to pull from
+          OAuthToken: <your-oauth-token>  # GitHub OAuth token for authentication
+
+  - name: Deploy
+    actions:
+      - name: DeployCloudFormation
+        actionTypeId:
+          category: Deploy
+          owner: AWS
+          provider: CloudFormation
+          version: 1
+        inputArtifacts:
+          - name: SourceOutput  # This artifact contains the implement2.yaml file
+        configuration:
+          StackName: MyWeatherAppStack  # CloudFormation stack name
+          Capabilities: CAPABILITY_IAM  # Permissions for IAM resources (if needed)
+          TemplatePath: https://github.com/sandeepdulam19/CAPSTONE/blob/master/implement2.yaml  # Path to the template file in SourceOutput artifact
